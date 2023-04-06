@@ -79,7 +79,7 @@
       <section>
         <h1 class="display-4 text-center">Administrador de Peliculas</h1>
         <hr>
-        <p>Opciones: <button class="btn btn-outline-primary"><i class="bi bi-clipboard-plus-fill"></i></button></p>
+        <p>Opciones: <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar"><i class="bi bi-clipboard-plus-fill"></i></button></p>
       </section>
       <section class="my-5">
         <h2 class="display-6">Lista de Pelis</h2>
@@ -133,6 +133,65 @@
         </table>
       </div>
       </section>
+    <section class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="true">
+      <article class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="agregarModalLabel">Administrar Serie</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Código</label>
+                <input type="text" class="form-control" id="recipient-name" placeholder="123" disabled>
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Titulo *</label>
+                <input type="text" class="form-control" id="recipient-name" required placeholder="Ej: Robotech">
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Descripcion *</label>
+                <input type="text" class="form-control" id="recipient-name" required placeholder="Ej: Lorem ipsum dolor sit amet">
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Imagen *</label>
+                <input type="text" class="form-control" id="recipient-name" required placeholder="Ej: http://127.0.0.1:5500/pages/administrador.html">
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Genero *</label>
+                <select class="form-select" aria-label="Elegir Genero" required>
+                  <option selected>Seleccione una opcion</option>
+                  <option value="1">Aventura</option>
+                  <option value="2">Accion</option>
+                  <option value="3">Drama</option>
+                  <option value="4">Terror</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Año</label>
+                <input type="text" class="form-control" id="recipient-name" placeholder="Ej: 2023">
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Duración</label>
+                <input type="text" class="form-control" id="recipient-name" placeholder="Ej: 93 min">
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">País</label>
+                <input type="text" class="form-control" id="recipient-name" placeholder="Ej: Argentina">
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Reparto <span class="text-muted text-sm">(Cada actor separado por ,)</span></label>
+                <input type="text" class="form-control" id="recipient-name" placeholder="Ej: Chris Pratt, Anya Taylor-Joy, Charlie Day, Jack Black">
+              </div>
+              <div class="justify-content-start">
+                <button type="button" class="btn btn-primary">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </article>
+    </section>
     </main>
     <footer class="bg-dark text-light text-center py-4">
         <p>&copy;Todos los derechos reservados</p>
