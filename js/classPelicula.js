@@ -1,4 +1,4 @@
-class Pelicula{
+export default class Pelicula{
     #codigo;
     #titulo;
     #descripcion;
