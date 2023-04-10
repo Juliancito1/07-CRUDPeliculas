@@ -79,7 +79,7 @@
       <section>
         <h1 class="display-4 text-center">Administrador de Peliculas</h1>
         <hr>
-        <p>Opciones: <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar"><i class="bi bi-clipboard-plus-fill"></i></button></p>
+        <p>Opciones: <button class="btn btn-outline-primary" id="btnAgregar"><i class="bi bi-clipboard-plus-fill"></i></button></p>
       </section>
       <section class="my-5">
         <h2 class="display-6">Lista de Pelis</h2>
@@ -103,7 +103,7 @@
               <td class="text-truncate">Pelicula de animación basada en la franquicia de videojuegos Super Mario Bros, de Nintendo. Está producida por Shigeru Miyamoto, creador de la licencia, y la producirá y animará Illumination Entertainment</td>
               <td class="text-truncate">https://pics.filmaffinity.com/the_super_mario_bros_movie-521125124-large.jpg</td>
               <td>Aventura</td>
-              <td><button class="bi bi-pencil-square btn btn-warning"></button> <button class="bi bi-x-square btn btn-danger"></button></td>
+              <td><button class="bi bi-pencil-square btn btn-warning" id="btnEditar"></button> <button class="bi bi-x-square btn btn-danger"></button></td>
             </tr>
             <tr>
               <th>2</th>
@@ -141,7 +141,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="formAdministrarPelicula">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Código</label>
                 <input type="text" class="form-control" id="recipient-name" placeholder="123" disabled>
@@ -161,7 +161,7 @@
               <div class="mb-3">
                 <label class="col-form-label">Genero *</label>
                 <select class="form-select" aria-label="Elegir Genero" required>
-                  <option selected>Seleccione una opcion</option>
+                  <option value="">Seleccione una opcion</option>
                   <option value="1">Aventura</option>
                   <option value="2">Accion</option>
                   <option value="3">Drama</option>
@@ -185,7 +185,7 @@
                 <input type="text" class="form-control" id="recipient-name" placeholder="Ej: Chris Pratt, Anya Taylor-Joy, Charlie Day, Jack Black">
               </div>
               <div class="justify-content-start">
-                <button type="button" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
               </div>
             </form>
           </div>
