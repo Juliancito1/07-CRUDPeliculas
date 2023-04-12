@@ -1,7 +1,22 @@
 import Pelicula from "./classPelicula.js";
+import { cantidadCaracteres } from "./helpers.js";
+import { sumarioValidaciones } from "./helpers.js";
+
 const btnEditar = document.getElementById('btnEditar');
 const btnAgregar = document.getElementById('btnAgregar');
+const codigo = document.getElementById('codigo');
+const titulo = document.getElementById('titulo');
+const descripcion = document.getElementById('descripcion');
+const imagen = document.getElementById('imagen');
+const genero = document.getElementById('genero');
+const duracion = document.getElementById('duracion');
+const anio = document.getElementById('anio');
+const pais = document.getElementById('pais');
+const reparto = document.getElementById('reparto');
+const msjFormulario = document.getElementById('msjFormulario');
 const formularioPelicula = document.getElementById('formAdministrarPelicula');
+let listaPeliculas = [];
+
 btnEditar.addEventListener('click',crearPeli);
 btnAgregar.addEventListener('click',mostrarModalPeli);
 formularioPelicula.addEventListener('submit',cargarPelicula)
@@ -24,6 +39,19 @@ function mostrarModalPeli(){
 
 function cargarPelicula(e){
     e.preventDefault();
-    console.log('creando la pelicula...');
-    modalPelicula.hide();
+    //validar los datos
+    let sumario = sumarioValidaciones(titulo.value, descripcion.value, imagen.value, duracion.value);
+    if(sumario.length === 0)
+    {
+        console.log('creando la pelicula...');
+        //crear la pelicula
+        //almacenar la peli en LocalStorage
+        //crear modal
+        modalPelicula.hide();
+    }
+    else{
+        msjFormulario.className = 'alert alert-danger mt-3';
+        msjFormulario.innerHTML = sumario;
+    }
+    
 }
