@@ -40,12 +40,18 @@ function mostrarModalPeli(){
 function cargarPelicula(e){
     e.preventDefault();
     //validar los datos
-    let sumario = sumarioValidaciones(titulo.value, descripcion.value, imagen.value, duracion.value);
+    let sumario = sumarioValidaciones(titulo.value, descripcion.value, imagen.value, duracion.value, genero.value);
     if(sumario.length === 0)
     {
         console.log('creando la pelicula...');
         //crear la pelicula
+        let nuevaPeli = new Pelicula(titulo.value,descripcion.value,imagen.value,genero.value,anio.value,duracion.value,pais.value,reparto.value);
         //almacenar la peli en LocalStorage
+        listaPeliculas.push(nuevaPeli);
+        console.log(listaPeliculas);
+        // localStorage.setItem('listaPeliculas', JSON.stringify(listaPeliculas)); // para objetos publicos funciona
+        
+        //limpiar el formulario
         //crear modal
         modalPelicula.hide();
     }
