@@ -108,13 +108,13 @@ export function sumarioValidaciones(titulo,descripcion,imagen,duracion,genero,an
         resumen += 'Seleccione un genero de la lista de opciones <br>'
     }
     if(!validarAnio(anio)){
-        resumen += 'Ingrese un año válido entre 1895 y 2024'
+        resumen += 'Ingrese un año válido entre 1895 y 2024 <br>'
     }
     if(!validarPais(pais)){
-        resumen += 'Ingrese el pais con la primera letra mayúscula'
+        resumen += 'Ingrese el pais con la primera letra mayúscula <br>'
     }
     if(!validarReparto(reparto)){
-        resumen += 'Ingrese el reparto usando una coma al final de cada actor/actriz'
+        resumen += 'Ingrese el reparto usando una coma al final de cada actor/actriz <br>'
     }
     if(resumen.length !== 0){
         return resumen;
