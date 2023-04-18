@@ -55,45 +55,48 @@ export default class Pelicula{
     }
     
     // setters
-    setCodigo(codigo) {
-        this.#codigo = codigo;
+    setCodigo(newCodigo) {
+        this.#codigo = newCodigo;
     }
-    setTitulo(titulo) {
-        this.#titulo = titulo;
+    setTitulo(newTitulo) {
+        this.#titulo = newTitulo;
     }
-    setDescripcion(descripcion) {
-        this.#descripcion = descripcion;
+    setDescripcion(newDescripcion) {
+        this.#descripcion = newDescripcion;
     }
-    setImagen(imagen) {
-        this.#imagen = imagen;
+    setImagen(newImagen) {
+        this.#imagen = newImagen;
     }
-    setGenero(genero) {
-        this.#genero = genero;
+    setGenero(newGenero) {
+        this.#genero = newGenero;
     }
-    setAnio(anio) {
-        this.#anio = anio;
+    setAnio(newAnio) {
+        this.#anio = newAnio;
     }
-    setDuracion(duracion) {
-        this.#duracion = duracion;
+    setDuracion(newDuracion) {
+        this.#duracion = newDuracion;
     }
-    setPais(pais) {
-        this.#pais = pais;
+    setPais(newPais) {
+        this.#pais = newPais;
     }
-    setReparto(reparto) {
-        this.#reparto = reparto;
+    setReparto(newReparto) {
+        this.#reparto = newReparto;
     }
-    setEstado(estado) {
-        this.#estado = estado;
+    setEstado(newEstado) {
+        this.#estado = newEstado;
     }
     //stringify accede a este metodo
     toJSON(){
         return {
-            codigo: this.#codigo,
-            titulo: this.#titulo,
-            descripcion: this.#descripcion,
-            imagen: this.#imagen,
-            genero: this.#genero,
-            duracion: this.#duracion
+            codigo: this.getCodigo(),
+            titulo: this.getTitulo(),
+            descripcion: this.getDescripcion(),
+            imagen: this.getImagen(),
+            genero: this.getGenero(),
+            anio: this.getAnio(),
+            duracion: this.getDuracion(),
+            pais: this.getPais(),
+            reparto: this.getReparto()
         }
     }
 }

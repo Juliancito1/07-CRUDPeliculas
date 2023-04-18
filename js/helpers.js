@@ -44,11 +44,49 @@ function validarGenero(texto){
     }
 }
 
-//agregar la validacion año 1985 - (año actual + 1)
+//agregar la validacion año 1895 - (año actual + 1)
+function validarAnio(value){
+    let patron = /^[0-9]{4}$/;
+    if(patron.test(value) && value >= 1895 && value <= 2024)
+    {
+        console.log('anio correcto');
+        return true;
+    }
+    else
+    {
+        console.log(value);
+        console.log('anio incorrecto')
+        return false;
+    }
+}
 //validacion para el pais
+function validarPais(texto){
+    let patron = /[A-Z]{1}/;
+    if(texto.length > 0 && patron.test(texto))
+    {
+        console.log('pais correcto');
+        return true;
+    }
+    else{
+        console.log('pais incorrecto');
+        return false;
+    }
+}
 //validacion para el reparto
+function validarReparto(texto){
+    let patron = /([A-Z])[a-z]+[$,]{1}[\s]/
+    if(texto.length > 0 && patron.test(texto))
+    {
+        console.log("reparto correcto");
+        return true;
+    }
+    else{
+        console.log("reparto incorrecto");
+        return false;
+    }
+}
 
-export function sumarioValidaciones(titulo,descripcion,imagen,duracion,genero){
+export function sumarioValidaciones(titulo,descripcion,imagen,duracion,genero,anio,pais,reparto){
     let resumen = '';
     if(!cantidadCaracteres(titulo,3,100))
     {
@@ -68,6 +106,15 @@ export function sumarioValidaciones(titulo,descripcion,imagen,duracion,genero){
     }
     if(!validarGenero(genero)){
         resumen += 'Seleccione un genero de la lista de opciones <br>'
+    }
+    if(!validarAnio(anio)){
+        resumen += 'Ingrese un año válido entre 1895 y 2024'
+    }
+    if(!validarPais(pais)){
+        resumen += 'Ingrese el pais con la primera letra mayúscula'
+    }
+    if(!validarReparto(reparto)){
+        resumen += 'Ingrese el reparto usando una coma al final de cada actor/actriz'
     }
     if(resumen.length !== 0){
         return resumen;
