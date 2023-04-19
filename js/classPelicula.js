@@ -23,80 +23,80 @@ export default class Pelicula{
     }
     // crear los getters y setters
     // getters
-    getCodigo() {
+    get codigo() {
         return this.#codigo;
     }
-    getTitulo() {
+    get titulo() {
         return this.#titulo;
     }
-    getDescripcion() {
+    get descripcion() {
         return this.#descripcion;
     }
-    getImagen() {
+    get imagen() {
         return this.#imagen;
     }
-    getGenero() {
+    get genero() {
         return this.#genero;
     }
-    getAnio() {
+    get anio() {
         return this.#anio;
     }
-    getDuracion() {
+    get duracion() {
         return this.#duracion;
     }
-    getPais() {
+    get pais() {
         return this.#pais;
     }
-    getReparto() {
+    get reparto() {
         return this.#reparto;
     }
-    getEstado() {
+    get estado() {
         return this.#estado;
     }
     
     // setters
-    setCodigo(newCodigo) {
+    set codigo(newCodigo) {
         this.#codigo = newCodigo;
     }
-    setTitulo(newTitulo) {
+    set titulo(newTitulo) {
         this.#titulo = newTitulo;
     }
-    setDescripcion(newDescripcion) {
+    set descripcion(newDescripcion) {
         this.#descripcion = newDescripcion;
     }
-    setImagen(newImagen) {
+    set imagen(newImagen) {
         this.#imagen = newImagen;
     }
-    setGenero(newGenero) {
+    set genero(newGenero) {
         this.#genero = newGenero;
     }
-    setAnio(newAnio) {
+    set anio(newAnio) {
         this.#anio = newAnio;
     }
-    setDuracion(newDuracion) {
+    set duracion(newDuracion) {
         this.#duracion = newDuracion;
     }
-    setPais(newPais) {
+    set pais(newPais) {
         this.#pais = newPais;
     }
-    setReparto(newReparto) {
+    set reparto(newReparto) {
         this.#reparto = newReparto;
     }
-    setEstado(newEstado) {
+    set estado(newEstado) {
         this.#estado = newEstado;
     }
     //stringify accede a este metodo
     toJSON(){
         return {
-            codigo: this.getCodigo(),
-            titulo: this.getTitulo(),
-            descripcion: this.getDescripcion(),
-            imagen: this.getImagen(),
-            genero: this.getGenero(),
-            anio: this.getAnio(),
-            duracion: this.getDuracion(),
-            pais: this.getPais(),
-            reparto: this.getReparto()
+            codigo: this.codigo,
+            titulo: this.titulo,
+            descripcion: this.descripcion,
+            imagen: this.imagen,
+            genero: this.genero,
+            anio: this.anio,
+            duracion: this.duracion,
+            pais: this.pais,
+            reparto: this.reparto
         }
     }
 }

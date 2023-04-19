@@ -18,9 +18,19 @@ const msjFormulario = document.getElementById('msjFormulario');
 const formularioPelicula = document.getElementById('formAdministrarPelicula');
 
 //trabajar las peliculas para que vuelvan a ser un objeto del tipo Pelicula.
-let listaPeliculas = JSON.parse(localStorage.getItem('listaPeliculas')) || [];
+// let listaPeliculas = JSON.parse(localStorage.getItem('listaPeliculas')) || []; //esto me devuelve un objeto tipo Object
+let listaPeliculas = localStorage.getItem('listaPeliculas');
+if(!listaPeliculas){
+    //si lista peliculas no existe en Localstorage
+    listaPeliculas = [];
+}
+else{
+    //si lista peliculas tiene datos, quiero transformarlo en un array de objetos pelicula
+    listaPeliculas = JSON.parse(listaPeliculas).map( (pelicula)=> new Pelicula(pelicula.titulo,pelicula.descripcion, pelicula.imagen, pelicula.genero, pelicula.anio,pelicula.duracion, pelicula.pais, pelicula.reparto));
+}
 console.log(listaPeliculas);
 
+//Manejadores de eventos
 btnEditar.addEventListener('click',crearPeli);
 btnAgregar.addEventListener('click',mostrarModalPeli);
 formularioPelicula.addEventListener('submit',cargarPelicula)
