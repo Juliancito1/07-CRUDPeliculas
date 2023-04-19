@@ -50,7 +50,6 @@ function cargaInicial(){
 function crearFila(pelicula, indice){
     //aqui dibujo el TR
     let datosTablaPelicula = document.querySelector('tbody');
-    console.log(datosTablaPelicula);
     datosTablaPelicula.innerHTML += `<tr>
     <th>${indice + 1}</th>
     <td>${pelicula.titulo}</td>
@@ -95,6 +94,17 @@ function cargarPelicula(e){
         limpiarFormularioPeliculas();
         //crear modal
         modalPelicula.hide();
+        //dibujar la fila;
+        let indicePeli = listaPeliculas.length - 1;
+        crearFila(nuevaPeli,indicePeli);
+        //mostrar un cartel al usuario
+        Swal.fire(
+            'Pelicula Creada',
+            'La pelicula ingresada fue creada correctamente',
+            'success'
+          )
+        //Verificar cantidad de caracteres en el campo de la descripcion
+        //Ocultar pasado x tiempo o una vez enviada la pelicula el alert con los errores.
     }
     else{
         msjFormulario.className = 'alert alert-danger mt-3';
