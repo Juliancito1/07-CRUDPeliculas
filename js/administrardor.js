@@ -1,5 +1,4 @@
 import Pelicula from "./classPelicula.js";
-import { cantidadCaracteres } from "./helpers.js";
 import { sumarioValidaciones } from "./helpers.js";
 
 const btnEditar = document.getElementById('btnEditar');
@@ -18,7 +17,7 @@ const msjFormulario = document.getElementById('msjFormulario');
 const formularioPelicula = document.getElementById('formAdministrarPelicula');
 
 //Manejadores de eventos
-btnEditar.addEventListener('click',crearPeli);
+//btnEditar.addEventListener('click',crearPeli);
 btnAgregar.addEventListener('click',mostrarModalPeli);
 formularioPelicula.addEventListener('submit',cargarPelicula)
 
@@ -43,17 +42,17 @@ function cargaInicial(){
     //verificar si listaPeliculas tiene datos
     if(listaPeliculas.length > 0){
         //dibujes los datos en la tabla
-        listaPeliculas.map((pelicula) => crearFila(pelicula))
+        listaPeliculas.map((pelicula, indice) => crearFila(pelicula,indice))
     }
     //else seria mostrar un mensaje que no hay datos para cargar o dejo la tabla vacia
 }
 
-function crearFila(pelicula){
+function crearFila(pelicula, indice){
     //aqui dibujo el TR
     let datosTablaPelicula = document.querySelector('tbody');
     console.log(datosTablaPelicula);
     datosTablaPelicula.innerHTML += `<tr>
-    <th>1</th>
+    <th>${indice + 1}</th>
     <td>${pelicula.titulo}</td>
     <td class="text-truncate">${pelicula.descripcion}</td>
     <td class="text-truncate">${pelicula.imagen}</td>
