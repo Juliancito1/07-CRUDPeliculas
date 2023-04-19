@@ -17,6 +17,13 @@ const msjFormulario = document.getElementById('msjFormulario');
 
 const formularioPelicula = document.getElementById('formAdministrarPelicula');
 
+//Manejadores de eventos
+btnEditar.addEventListener('click',crearPeli);
+btnAgregar.addEventListener('click',mostrarModalPeli);
+formularioPelicula.addEventListener('submit',cargarPelicula)
+
+const modalPelicula = new bootstrap.Modal(document.getElementById('modalAgregar'));
+
 //trabajar las peliculas para que vuelvan a ser un objeto del tipo Pelicula.
 // let listaPeliculas = JSON.parse(localStorage.getItem('listaPeliculas')) || []; //esto me devuelve un objeto tipo Object
 let listaPeliculas = localStorage.getItem('listaPeliculas');
@@ -30,12 +37,34 @@ else{
 }
 console.log(listaPeliculas);
 
-//Manejadores de eventos
-btnEditar.addEventListener('click',crearPeli);
-btnAgregar.addEventListener('click',mostrarModalPeli);
-formularioPelicula.addEventListener('submit',cargarPelicula)
+cargaInicial();
 
-const modalPelicula = new bootstrap.Modal(document.getElementById('modalAgregar'));
+function cargaInicial(){
+    //verificar si listaPeliculas tiene datos
+    if(listaPeliculas.length > 0){
+        //dibujes los datos en la tabla
+        listaPeliculas.map((pelicula) => crearFila(pelicula))
+    }
+    //else seria mostrar un mensaje que no hay datos para cargar o dejo la tabla vacia
+}
+
+function crearFila(pelicula){
+    //aqui dibujo el TR
+    let datosTablaPelicula = document.querySelector('tbody');
+    console.log(datosTablaPelicula);
+    datosTablaPelicula.innerHTML += `<tr>
+    <th>1</th>
+    <td>${pelicula.titulo}</td>
+    <td class="text-truncate">${pelicula.descripcion}</td>
+    <td class="text-truncate">${pelicula.imagen}</td>
+    <td>${pelicula.genero}</td>
+    <td>
+    <button class="bi bi-pencil-square btn btn-warning" id="btnEditar"></button> 
+    <button class="bi bi-x-square btn btn-danger"></button>
+    </td>
+  </tr>`
+}
+
 
 
 // crear una nueva peli
