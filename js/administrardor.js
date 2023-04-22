@@ -109,6 +109,10 @@ function cargarPelicula(e){
     else{
         msjFormulario.className = 'alert alert-danger mt-3';
         msjFormulario.innerHTML = sumario;
+        setTimeout(() => {
+            msjFormulario.style.display = 'none'
+        },3000)
+        msjFormulario.style.display = 'block'
     }
     
 }
