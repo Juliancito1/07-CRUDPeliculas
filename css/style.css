@@ -17,3 +17,7 @@ main{
 .table{
     table-layout: fixed;
 }
+
+textarea{
+    resize: none;
+}
