@@ -21,6 +21,7 @@ const formularioPelicula = document.getElementById('formAdministrarPelicula');
 btnAgregar.addEventListener('click',mostrarModalPeli);
 formularioPelicula.addEventListener('submit',cargarPelicula)
 
+
 const modalPelicula = new bootstrap.Modal(document.getElementById('modalAgregar'));
 
 //trabajar las peliculas para que vuelvan a ser un objeto del tipo Pelicula.
@@ -63,6 +64,15 @@ function crearFila(pelicula, indice){
   </tr>`
 }
 
+let spanCaracter = document.getElementById('contadorcaracter');
+const maximoCaracter = 500;
+
+const contarCaracteres = () => {
+    let cantidadCaracteres = descripcion.value.length;
+    let contar = maximoCaracter - cantidadCaracteres;
+    spanCaracter.textContent = contar + "/500"
+}
+descripcion.addEventListener('keydown',contarCaracteres)
 
 
 // crear una nueva peli
@@ -109,6 +119,10 @@ function cargarPelicula(e){
     else{
         msjFormulario.className = 'alert alert-danger mt-3';
         msjFormulario.innerHTML = sumario;
+        setTimeout(() => {
+            msjFormulario.style.display = 'none'
+        },3000)
+        msjFormulario.style.display = 'block'
     }
     
 }
