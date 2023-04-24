@@ -33,7 +33,18 @@ if(!listaPeliculas){
 }
 else{
     //si lista peliculas tiene datos, quiero transformarlo en un array de objetos pelicula
-    listaPeliculas = JSON.parse(listaPeliculas).map( (pelicula)=> new Pelicula(pelicula.titulo,pelicula.descripcion, pelicula.imagen, pelicula.genero, pelicula.anio,pelicula.duracion, pelicula.pais, pelicula.reparto));
+    listaPeliculas = JSON.parse(listaPeliculas).map( 
+        (pelicula)=> 
+        new Pelicula(
+            pelicula.codigo,
+            pelicula.titulo,
+            pelicula.descripcion, 
+            pelicula.imagen, 
+            pelicula.genero, 
+            pelicula.anio,
+            pelicula.duracion, 
+            pelicula.pais, 
+            pelicula.reparto));
 }
 console.log(listaPeliculas);
 
@@ -59,7 +70,7 @@ function crearFila(pelicula, indice){
     <td>${pelicula.genero}</td>
     <td>
     <button class="bi bi-pencil-square btn btn-warning" id="btnEditar"></button> 
-    <button class="bi bi-x-square btn btn-danger" onclick="borrarPelicula()"></button>
+    <button class="bi bi-x-square btn btn-danger" onclick="borrarPelicula('${pelicula.codigo}')"></button>
     </td>
   </tr>`
 }
@@ -75,13 +86,6 @@ const contarCaracteres = () => {
 descripcion.addEventListener('keydown',contarCaracteres)
 
 
-// crear una nueva peli
-
-function crearPeli(){
-    let nuevaPeli = new Pelicula('Super Mario','algo','url','aventura',2023,'2hs','EEUU','-');
-console.log(nuevaPeli)
-}
-
 function mostrarModalPeli(){
     //abrir la ventana
     modalPelicula.show()
@@ -96,7 +100,16 @@ function cargarPelicula(e){
     {
         console.log('creando la pelicula...');
         //crear la pelicula
-        let nuevaPeli = new Pelicula(titulo.value,descripcion.value,imagen.value,genero.value,anio.value,duracion.value,pais.value,reparto.value);
+        let nuevaPeli = new Pelicula(
+            undefined,
+            titulo.value,
+            descripcion.value,
+            imagen.value,
+            genero.value,
+            anio.value,
+            duracion.value,
+            pais.value,
+            reparto.value);
         //almacenar la peli en LocalStorage
         listaPeliculas.push(nuevaPeli);
         guardarenLocalStorage();
@@ -135,6 +148,7 @@ function limpiarFormularioPeliculas(){
     formularioPelicula.reset()
 }
 
-window.borrarPelicula= () =>{
+window.borrarPelicula= (codigo) =>{
+    console.log(codigo)
     console.log('aqui borro la peli');
 }

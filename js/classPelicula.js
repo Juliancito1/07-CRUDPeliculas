@@ -9,8 +9,8 @@ export default class Pelicula{
     #pais;
     #reparto;
     #estado;
-    constructor(titulo, descripcion, imagen, genero, anio, duracion, pais,reparto){
-        this.#codigo = uuidv4();
+    constructor(codigo = uuidv4(), titulo, descripcion, imagen, genero, anio, duracion, pais,reparto){
+        this.#codigo = codigo;
         this.#titulo = titulo;
         this.#descripcion = descripcion;
         this.#imagen = imagen;
