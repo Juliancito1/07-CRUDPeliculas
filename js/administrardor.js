@@ -69,7 +69,7 @@ function crearFila(pelicula, indice){
     <td class="text-truncate">${pelicula.imagen}</td>
     <td>${pelicula.genero}</td>
     <td>
-    <button class="bi bi-pencil-square btn btn-warning" id="btnEditar"></button> 
+    <button class="bi bi-pencil-square btn btn-warning" id="btnEditar" onclick="editarPelicula('${pelicula.codigo}')"></button> 
     <button class="bi bi-x-square btn btn-danger" onclick="borrarPelicula('${pelicula.codigo}')"></button>
     </td>
   </tr>`
@@ -183,4 +183,17 @@ window.borrarPelicula= (codigo) =>{
           )
         }
       })
+}
+
+window.editarPelicula = (codigoUnico) =>{
+    //mostrar la ventana modal
+    const pelicula = listaPeliculas.find(peli => peli.codigo === codigoUnico);
+    console.log(pelicula);
+    modalPelicula.show();
+    //completar los datos en el modal
+    codigo.value = pelicula.codigo;
+    titulo.value = pelicula.titulo;
+    descripcion.value = pelicula.descripcion;
+    imagen.value = pelicula.imagen;
+    genero.value = pelicula.genero;
 }
