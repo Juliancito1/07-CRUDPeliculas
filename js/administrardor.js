@@ -151,4 +151,16 @@ function limpiarFormularioPeliculas(){
 window.borrarPelicula= (codigo) =>{
     console.log(codigo)
     console.log('aqui borro la peli');
+    //busco en el array de pelicula la peli que quiero 
+    let posicionPeli = listaPeliculas.findIndex(pelicula => pelicula.codigo === codigo)
+    console.log(posicionPeli)
+    //borrar del array el objeto pelicula
+    listaPeliculas.splice(posicionPeli,1);
+    //igualar los datos del local storage
+    guardarenLocalStorage();
+    //quitar la fila de la tabla
+    let datosTablaPelicula = document.querySelector('tbody');
+    //console.log(datosTablaPelicula.children[posicionPeli]);
+    datosTablaPelicula.removeChild(datosTablaPelicula.children[posicionPeli]);
+    //todo: actualizar la fila de la tabla
 }
