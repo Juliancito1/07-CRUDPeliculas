@@ -88,6 +88,7 @@ descripcion.addEventListener('keydown',contarCaracteres)
 
 
 function mostrarModalPeli(){
+    estadoPelicula = true;
     //abrir la ventana
     modalPelicula.show()
     console.log('aqui vamos a crear una peli')
