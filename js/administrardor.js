@@ -15,6 +15,7 @@ const reparto = document.getElementById('reparto');
 const msjFormulario = document.getElementById('msjFormulario');
 
 const formularioPelicula = document.getElementById('formAdministrarPelicula');
+let estadoPelicula = true;
 
 //Manejadores de eventos
 //btnEditar.addEventListener('click',crearPeli);
@@ -94,6 +95,17 @@ function mostrarModalPeli(){
 
 function cargarPelicula(e){
     e.preventDefault();
+    if(estadoPelicula){
+        crearPelicula();
+    }
+    else{
+        actualizarPelicula();
+    }
+    
+    
+}
+
+function crearPelicula(){
     //validar los datos
     let sumario = sumarioValidaciones(titulo.value, descripcion.value, imagen.value, duracion.value, genero.value,anio.value,pais.value,reparto.value);
     if(sumario.length === 0)
@@ -137,7 +149,6 @@ function cargarPelicula(e){
         },3000)
         msjFormulario.style.display = 'block'
     }
-    
 }
 
 function guardarenLocalStorage(){
@@ -175,7 +186,7 @@ window.borrarPelicula= (codigo) =>{
         let datosTablaPelicula = document.querySelector('tbody');
         //console.log(datosTablaPelicula.children[posicionPeli]);
         datosTablaPelicula.removeChild(datosTablaPelicula.children[posicionPeli]);
-        //todo: actualizar la fila de la tabla
+        //todo: actualizar la fila de la tabla como el update
           Swal.fire(
             'Borramos la pelicula',
             'La pelicula seleccionada fue eliminada correctamente',
@@ -196,4 +207,43 @@ window.editarPelicula = (codigoUnico) =>{
     descripcion.value = pelicula.descripcion;
     imagen.value = pelicula.imagen;
     genero.value = pelicula.genero;
+    anio.value = pelicula.anio;
+    duracion.value = pelicula.duracion;
+    pais.value = pelicula.pais;
+    reparto.value = pelicula.reparto;
+    //el estado de la variable bandera
+    estadoPelicula = false;
+}
+
+function actualizarPelicula(){
+    //validar los datos
+    //necesito la pelicula que estoy editando
+    let posicionPelicula = listaPeliculas.findIndex(peli => peli.codigo === codigo.value)
+    //actualizar las propiedades de esa pelicula
+    listaPeliculas[posicionPelicula].titulo = titulo.value;
+    listaPeliculas[posicionPelicula].descripcion = descripcion.value;
+    listaPeliculas[posicionPelicula].imagen = imagen.value;
+    listaPeliculas[posicionPelicula].genero = genero.value;
+    listaPeliculas[posicionPelicula].anio = anio.value;
+    listaPeliculas[posicionPelicula].duracion = duracion.value;
+    listaPeliculas[posicionPelicula].pais = pais.value;
+    listaPeliculas[posicionPelicula].reparto = reparto.value;
+    //actualizar el localstorage
+    guardarenLocalStorage();
+    //mostrar un msj
+    Swal.fire(
+        "Pelicula Editada",
+        "La pelicula seleccionada fue editada corrrectamente",
+        "success"
+    );
+    //se vea en la tabla
+    let datosTablaPelicula = document.querySelector('tbody');
+    datosTablaPelicula.children[posicionPelicula].children[1].innerText = titulo.value;
+    datosTablaPelicula.children[posicionPelicula].children[2].innerText = descripcion.value;
+    datosTablaPelicula.children[posicionPelicula].children[3].innerText = imagen.value;
+    datosTablaPelicula.children[posicionPelicula].children[4].innerText = genero.value;
+    //limpiar el formulario
+    limpiarFormularioPeliculas();
+    //cerrar el modal
+    modalPelicula.hide();
 }
